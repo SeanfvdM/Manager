@@ -13,6 +13,11 @@ import java.util.Objects;
  */
 public class ReaderWriter extends Reader implements ManagerBase<File> {
 
+//    @Override
+//    protected String[] getPermission() {
+//        return new String[]{Manifest.permission_group.STORAGE};
+//    }
+
     @Override
     public File getMain() {
         return main;
@@ -21,7 +26,7 @@ public class ReaderWriter extends Reader implements ManagerBase<File> {
     @Override
     public void setMain(File main) {
         this.main = main;
-        if(current == null)
+        if (current == null)
             setCurrent(main);
     }
 

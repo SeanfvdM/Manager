@@ -1,5 +1,7 @@
 package com.badas.datamanager.File;
 
+import android.Manifest;
+
 import com.badas.datamanager.Manager.Base;
 
 import java.io.File;
@@ -12,6 +14,11 @@ import java.io.IOException;
  */
 class Writer extends Base<File> {
     protected FileListener fileListener;
+
+    @Override
+    protected String[] getPermission() {
+        return new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    }
 
     /***
      * Creates a folder at the desired destination with the new name.
