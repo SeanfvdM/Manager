@@ -49,6 +49,7 @@ public class Manager<E extends ManagerBase<?>> {
      * @param activity Give the ability to request permission.
      * @return Will return <code>true</code> if all permissions are granted
      */
+    @SuppressWarnings("rawtypes")
     public boolean checkPermissions(Activity activity) {
         List<String> listPermissionsNeeded = new ArrayList<>();
         for (String perm : ((Base) type).getPermission()) {
@@ -57,6 +58,7 @@ public class Manager<E extends ManagerBase<?>> {
             }
         }
         if (!listPermissionsNeeded.isEmpty()) {
+            //noinspection ToArrayCallWithZeroLengthArrayArgument
             ActivityCompat.requestPermissions(activity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), ((Base) type).PERMISSION_REQUEST);
             return false;
         }
