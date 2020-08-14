@@ -32,7 +32,7 @@ Manager<ReaderWriter> manager = new Manager<ReaderWriter>();
 manager.init(new ReaderWriter());
 manager.get().setMain(getFilesDir());
 ```
-**Will check for prmissions**
+**Will check for permissions**
 ```java
 manager.init(new ReaderWriter(),this);
 manager.get().setMain(getFilesDir());
