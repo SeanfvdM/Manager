@@ -27,12 +27,12 @@ This is if you want to use the manager class which will provide more functionali
 Manager<ReaderWriter> manager = new Manager<ReaderWriter>();
 ```
 2) Initialise the base type
-**Requires manual permission check**
+*Requires manual permission check*
 ```java
 manager.init(new ReaderWriter());
 manager.get().setMain(getFilesDir());
 ```
-**Will check for permissions**
+*Will check for permissions*
 ```java
 manager.init(new ReaderWriter(),this);
 manager.get().setMain(getFilesDir());
