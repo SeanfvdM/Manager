@@ -90,4 +90,28 @@ public class ReaderWriter extends Reader implements ManagerBase<File> {
     public boolean compare(File file1, File file2) {
         return file1.equals(file2);
     }
+
+    /***
+     * Deletes the current file
+     * @param file the file to delete
+     */
+    public void delete(File file){
+        recursiveDelete(file);
+    }
+
+    private void recursiveDelete(File file) {
+        if (file.isDirectory())
+            for (File child : Objects.requireNonNull(file.listFiles()))
+                recursiveDelete(child);
+
+        //noinspection UnnecessaryLocalVariable
+        File temp = file;
+        if (file.delete()) {
+            if (fileListener != null)
+                if (temp.isFile())
+                    fileListener.onFileDeleted(temp);
+                else
+                    fileListener.onDirectoryDeleted(temp);
+        }
+    }
 }
