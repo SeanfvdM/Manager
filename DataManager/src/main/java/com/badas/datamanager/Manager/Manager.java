@@ -5,17 +5,22 @@ package com.badas.datamanager.Manager;
  * By: Seanf
  * Created: 14,August,2020
  */
-public class Manager <E extends ManagerBase<?>> {
+public class Manager<E extends ManagerBase<?>> {
     private E type;
 
-    public Manager() {
-    }
-
-    public void init(E base){
+    /***
+     * Initialise the manager
+     * @param base the constructor of the base
+     */
+    public void init(E base) {
         type = base;
     }
 
-    public E get(){
+    /***
+     * Retrieves the base for calling
+     * @return The base
+     */
+    public E get() {
         return this.type;
     }
 }

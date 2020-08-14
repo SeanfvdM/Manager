@@ -6,6 +6,9 @@ package com.badas.datamanager.Manager;
  * Created: 14,August,2020
  */
 public class Base<T> {
+    /***
+     * Base variables
+     */
     protected T current, main;
 }
 

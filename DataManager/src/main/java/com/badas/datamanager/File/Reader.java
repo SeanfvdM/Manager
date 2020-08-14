@@ -11,7 +11,12 @@ import java.util.Objects;
  * Created: 14,August,2020
  */
 class Reader extends Writer {
-    public ArrayList<File> retrieveFiles(File file){
+    /***
+     * Retrieves all of the files from the file if there are any to retrieve.
+     * @param file The file you would like to retrieve data from.
+     * @return The list of file that are contained within the parent file.
+     */
+    public ArrayList<File> retrieveFiles(File file) {
         return new ArrayList<>(Arrays.asList(Objects.requireNonNull(file.listFiles())));
     }
 }

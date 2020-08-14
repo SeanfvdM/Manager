@@ -28,7 +28,7 @@ public class ReaderWriter extends Reader implements ManagerBase<File> {
     private void setCurrent(File file){
         if (!file.equals(main.getParentFile())){
             if (fileListener!=null)
-                fileListener.onCurrentDirectoryChanged(current,file);
+                fileListener.onCurrentDirectoryChanged(current, file);
             current = file;
         }
     }
@@ -38,25 +38,56 @@ public class ReaderWriter extends Reader implements ManagerBase<File> {
         return current;
     }
 
+    /***
+     * Deprecated - Was replaced by navigate
+     */
+    @Deprecated
     public File navigateIn(File file) {
-        if (fileListener!=null)
-            fileListener.onFileNavigate(current,file);
+        if (fileListener != null)
+            fileListener.onFileNavigate(current, file);
         setCurrent(file);
         return current;
     }
 
+    /***
+     * Will navigate from the current file to the specified file.
+     * @param file The file that is being navigated to.
+     * @return The current set file for easy access.
+     */
+    public File navigate(File file) {
+        if (fileListener != null)
+            fileListener.onFileNavigate(current, file);
+        setCurrent(file);
+        return current;
+    }
+
+    /***
+     * Will navigate to the current files parent.
+     * If the current is equal to main it will not navigate.
+     * @return The current set file for easy access.
+     */
     public File navigateOut() {
-        if (fileListener!=null)
-            fileListener.onFileNavigate(current,current.getParentFile());
+        if (fileListener != null)
+            fileListener.onFileNavigate(current, current.getParentFile());
         setCurrent(Objects.requireNonNull(current.getParentFile()));
         return current;
     }
 
-    public ArrayList<File> retrieveCurrentFile(){
+    /***
+     * Retrieves all of the child files for the current.
+     * @return The files that where retrieved.
+     */
+    public ArrayList<File> retrieveCurrentFile() {
         return retrieveFiles(current);
     }
 
-    public boolean compare(File file1, File file2){
+    /***
+     * A simple compare method
+     * @param file1 First file to compare
+     * @param file2 Second file to compare
+     * @return Will return <code>true</code> if they match else <code>false</code>
+     */
+    public boolean compare(File file1, File file2) {
         return file1.equals(file2);
     }
 }
