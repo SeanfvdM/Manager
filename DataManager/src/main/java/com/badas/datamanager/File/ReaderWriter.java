@@ -95,8 +95,10 @@ public class ReaderWriter extends Reader implements ManagerBase<File> {
      * Deletes the current file
      * @param file the file to delete
      */
-    public void delete(File file){
+    public File delete(File file) {
+        File temp = file.getParentFile();
         recursiveDelete(file);
+        return temp;
     }
 
     private void recursiveDelete(File file) {
