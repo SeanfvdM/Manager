@@ -13,7 +13,7 @@ public class Base<T> {
      */
     protected T current, main;
 
-    public int PERMISSION_REQUEST = new Random().nextInt(1000);
+    public final int PERMISSION_REQUEST = new Random().nextInt(1000);
 
     /***
      * The permissions the class requires

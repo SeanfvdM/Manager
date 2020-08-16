@@ -17,6 +17,9 @@ public interface FileListener {
     void onFileDeleted(File deletedFile);
     void onDirectoryDeleted(File deletedDirectory);
     void onFileRead(File file, String data);
+
+    void onFileWrite(File file, String data);
+
     void onCurrentDirectoryChanged(File newDir, File oldDir);
     void onFileNavigate(File from, File To);
 }

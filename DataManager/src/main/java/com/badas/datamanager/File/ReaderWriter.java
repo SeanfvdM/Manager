@@ -1,9 +1,12 @@
 package com.badas.datamanager.File;
 
+import android.Manifest;
+
 import com.badas.datamanager.Manager.ManagerBase;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -12,6 +15,14 @@ import java.util.Objects;
  * Created: 14,August,2020
  */
 public class ReaderWriter extends Reader implements ManagerBase<File> {
+
+    @Override
+    protected String[] getPermission() {
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add(Manifest.permission_group.STORAGE);
+        temp.addAll(Arrays.asList(super.getPermission()));
+        return temp.toArray(new String[0]);
+    }
 
     @Override
     public File getMain() {
