@@ -52,7 +52,7 @@ ReaderWriter rw = new ReaderWriter();
 ```java
 rw.setMain(getFilesDir());
 ```
-3)Check for permission
+3) Check for permission
 ```java
 rw.checkPermissions(this);
 ```
